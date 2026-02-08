@@ -8,8 +8,11 @@ import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 import { GarbagedexItemId } from "@/src/garbagedex/types";
 import { DEX_ASSETS } from "@/src/garbagedex/registry";
 import { DefaultText } from "@/components/DefaultText";
+import { GambageReveal } from "@/components/GambageReveal";
 
-const DEFAULT_IMG = require("../assets/images/gamblage.png"); // adjust path
+const DEFAULT_IMG = require("../assets/images/gamblage2.png"); // adjust path
+const OPEN_IMG = require("../assets/images/trashopen.png");
+
 
 
 
@@ -20,6 +23,7 @@ export default function Gambage() {
   const goal = state.rollGoal;
 
   const [revealedId, setRevealedId] = useState<GarbagedexItemId | null>(null);
+  const [revealTrigger, setRevealTrigger] = useState(0);
   const displayImg = revealedId ? DEX_ASSETS[revealedId].unlockedImg : DEFAULT_IMG;
   const revealedName =
   revealedId && DEX_ASSETS[revealedId]
@@ -38,7 +42,13 @@ export default function Gambage() {
 
       <View style={styles.center}>
         {/* replace with your asset */}
-        <PrizeCard source={displayImg} />
+        <GambageReveal
+            closedSrc={DEFAULT_IMG}
+            openSrc={OPEN_IMG}
+            revealedSrc={displayImg}
+            trigger={revealTrigger}
+            size={260}
+        />
         
         {revealedName && (
         <DefaultText style={styles.revealText}>
@@ -54,7 +64,10 @@ export default function Gambage() {
           onPress={() => {
             const prizeID = rollPrize();
             console.log("claim!");
-            if (prizeID) setRevealedId(prizeID);
+            if (prizeID) {
+                setRevealedId(prizeID);
+                setRevealTrigger((x) => x + 1);
+            }
           }}
         />
       </View>

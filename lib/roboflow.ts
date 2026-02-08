@@ -1,6 +1,6 @@
 import * as FileSystem from "expo-file-system/legacy";
 
-const MODEL_ID = "recycling-2aqxo/1";
+const MODEL_ID = "recycling-2aqxo-gfrmv/1";
 
 export async function detectTrash(photoUri: string) {
   const apiKey = process.env.EXPO_PUBLIC_ROBOFLOW_API_KEY;
