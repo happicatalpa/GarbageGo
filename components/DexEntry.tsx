@@ -1,8 +1,8 @@
 import React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
-import { GarbagedexItemId } from "../src/garbagedex/types";
-import { DEX_ASSETS } from "../src/garbagedex/registry";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
+import { DEX_ASSETS } from "../src/garbagedex/registry";
+import { GarbagedexItemId } from "../src/garbagedex/types";
 
 export function DexEntry({
   id,
@@ -46,14 +46,14 @@ export function DexEntry({
 const styles = StyleSheet.create({
   tile: {
     borderRadius: 0,
-    backgroundColor: "#E7E1D6",
+    //backgroundColor: "#E7E1D6",
     overflow: "hidden",
   },
   caption: {
     paddingHorizontal: 8,
     textAlign: "center",
     paddingTop: 4,
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: "600",
     fontFamily: "Pixel",
   },
