@@ -169,7 +169,6 @@ const styles = StyleSheet.create({
   smallNote: {
     color: "#7B7B7B",
     fontSize: 16,
-    fontFamily: "monospace",
     letterSpacing: 0.5,
   },
 
@@ -177,7 +176,6 @@ const styles = StyleSheet.create({
     color: "#6E6E6E",
     fontSize: 36,
     textAlign: "center",
-    fontFamily: "monospace",
     letterSpacing: 1.5,
     lineHeight: 44,
     textTransform: "uppercase",
@@ -213,7 +211,6 @@ const styles = StyleSheet.create({
   ctaText: {
     color: "#6E6E6E",
     fontSize: 18,
-    fontFamily: "monospace",
     letterSpacing: 1,
     textTransform: "lowercase",
   },

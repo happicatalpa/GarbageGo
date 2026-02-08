@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import { GarbagedexProvider } from "../src/garbagedex/garbagedexProvider";
 
 export default function RootLayout() {
     const [fontsLoaded] = useFonts({
@@ -11,5 +12,9 @@ export default function RootLayout() {
     }
 
     
-    return <Stack />;
+    return (
+        <GarbagedexProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+        </GarbagedexProvider>
+    );
 }
