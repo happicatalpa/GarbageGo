@@ -1,3 +1,4 @@
+//import { clearAllStorage } from "@/src/garbagedex/storage";
 import { Redirect, router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";

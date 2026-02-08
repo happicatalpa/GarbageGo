@@ -1,5 +1,6 @@
 import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
+import { DefaultText } from "./DefaultText";
 
 export function PixelButton({
   title,
@@ -16,7 +17,7 @@ export function PixelButton({
       disabled={disabled}
       style={[styles.btn, disabled && styles.disabled]}
     >
-      <Text style={styles.text}>{title}</Text>
+      <DefaultText style={styles.text}>{title}</DefaultText>
     </Pressable>
   );
 }

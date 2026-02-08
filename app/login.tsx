@@ -21,7 +21,7 @@ export default function LoginScreen() {
           />
         </View>
 
-        <Text style={styles.subtitle}>go garbage</Text>
+        <Text style={styles.subtitle}>garbage go</Text>
       </View>
 
       {/* Form */}
