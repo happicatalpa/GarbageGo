@@ -39,6 +39,7 @@ export function GambageReveal({
   // animations
   const shakeX = useRef(new Animated.Value(0)).current;
   const pop = useRef(new Animated.Value(1)).current;
+  const openOpacity = useRef(new Animated.Value(1)).current;
   const revealOpacity = useRef(new Animated.Value(0)).current;
   const confettiOpacity = useRef(new Animated.Value(0)).current;
 
@@ -67,11 +68,21 @@ export function GambageReveal({
     return pieces;
   }, [trigger, confettiCount]);
 
+  const didMount = useRef(false);
+
+  
+
   useEffect(() => {
+    if (!didMount.current) {
+        didMount.current = true;
+        return;
+    }
+    
     // reset
     setPhase("closed");
     shakeX.setValue(0);
     pop.setValue(1);
+    openOpacity.setValue(1);
     revealOpacity.setValue(0);
     confettiOpacity.setValue(0);
     confettiY.forEach((v) => v.setValue(0));
@@ -140,6 +151,14 @@ export function GambageReveal({
           duration: fadeMs,
           useNativeDriver: true,
         }),
+        // fade open image out
+        Animated.timing(openOpacity, {
+            toValue: 0,
+            duration: 700,
+            delay: 250,
+            useNativeDriver: true,
+        }),
+
         Animated.sequence([
           Animated.delay(200),
           Animated.parallel(confettiAnims),
@@ -172,7 +191,7 @@ export function GambageReveal({
         <Animated.Image
           source={phase === "closed" ? closedSrc : openSrc}
           resizeMode="contain"
-          style={styles.img}
+          style={[styles.img, { opacity: openOpacity }]}
         />
       </Animated.View>
 
@@ -184,6 +203,7 @@ export function GambageReveal({
           style={[styles.img, styles.absolute, { opacity: revealOpacity }]}
         />
       )}
+
 
       {/* Confetti overlay */}
       {phase === "open" && (

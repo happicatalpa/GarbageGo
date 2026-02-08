@@ -8,9 +8,6 @@ import { PixelButton } from "../components/PixelButton";
 import { PrizeCard } from "../components/PrizeCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
-import { GarbagedexItemId } from "@/src/garbagedex/types";
-import { DEX_ASSETS } from "@/src/garbagedex/registry";
-import { DefaultText } from "@/components/DefaultText";
 import { GambageReveal } from "@/components/GambageReveal";
 
 const DEFAULT_IMG = require("../assets/images/gamblage2.png"); // adjust path
@@ -38,6 +35,8 @@ export default function Gambage() {
 
 //   }
 
+const hasRolled = revealTrigger > 0;
+
 
   return (
     <View style={styles.screen}>
@@ -45,6 +44,7 @@ export default function Gambage() {
 
       <View style={styles.center}>
         {/* replace with your asset */}
+        
         <GambageReveal
             closedSrc={DEFAULT_IMG}
             openSrc={OPEN_IMG}
