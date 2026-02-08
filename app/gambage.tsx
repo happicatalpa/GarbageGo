@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { BackArrow } from "../components/BackArrow";
 import { PrizeCard } from "../components/PrizeCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { PixelButton } from "../components/PixelButton";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
+import { GarbagedexItemId } from "@/src/garbagedex/types";
+import { DEX_ASSETS } from "@/src/garbagedex/registry";
+
+const DEFAULT_IMG = require("../assets/images/gamblage.png"); // adjust path
+
+
 
 export default function Gambage() {
   // Replace with your real points state/store
@@ -12,22 +18,31 @@ export default function Gambage() {
   const points = state.points;
   const goal = state.rollGoal;
 
+  const [revealedId, setRevealedId] = useState<GarbagedexItemId | null>(null);
+  const displayImg = revealedId ? DEX_ASSETS[revealedId].unlockedImg : DEFAULT_IMG;
+
+//   function animateReveal(int newID) {
+
+//   }
+
+
   return (
     <View style={styles.screen}>
       <BackArrow />
 
       <View style={styles.center}>
         {/* replace with your asset */}
-        <PrizeCard source={require("../assets/images/gamblage.png")} />
+        <PrizeCard source={displayImg} />
 
         <ProgressBar current={Math.min(10, points)} goal={goal} segments={10} />
 
         <PixelButton
           title="claim gambage"
-          disabled={canRoll()}
+          disabled={!canRoll()}
           onPress={() => {
-            rollPrize();
+            const prizeID = rollPrize();
             console.log("claim!");
+            if (prizeID) setRevealedId(prizeID);
           }}
         />
       </View>

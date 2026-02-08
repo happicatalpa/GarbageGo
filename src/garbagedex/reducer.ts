@@ -50,7 +50,7 @@ export function garbagedexReducer(
       const entry = state.dex[action.id];
       if (!entry) return state;
       if (entry.unlocked) return state;
-
+        console.log("[REDUCER] unlocking something");
       return {
         ...state,
         dex: {

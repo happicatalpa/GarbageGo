@@ -11,3 +11,10 @@ export async function loadState(): Promise<GarbagedexState | null> {
 export async function saveState(state: GarbagedexState) {
   await AsyncStorage.setItem(KEY, JSON.stringify(state));
 }
+
+
+export async function clearAllStorage() {
+  await AsyncStorage.clear();
+  console.log("[STORAGE] Cleared all AsyncStorage");
+}
+
