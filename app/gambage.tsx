@@ -1,14 +1,13 @@
 import { DefaultText } from "@/components/DefaultText";
+import { GambageReveal } from "@/components/GambageReveal";
 import { DEX_ASSETS } from "@/src/garbagedex/registry";
 import { GarbagedexItemId } from "@/src/garbagedex/types";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { BackArrow } from "../components/BackArrow";
 import { PixelButton } from "../components/PixelButton";
-import { PrizeCard } from "../components/PrizeCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
-import { GambageReveal } from "@/components/GambageReveal";
 
 const DEFAULT_IMG = require("../assets/images/gamblage2.png"); // adjust path
 const OPEN_IMG = require("../assets/images/trashopen.png");
