@@ -1,37 +1,32 @@
 import * as FileSystem from "expo-file-system/legacy";
 
-const WORKFLOW_URL =
-  "https://serverless.roboflow.com/ginas-workspace/workflows/detect-and-classify-2";
+const MODEL_ID = "recycling-2aqxo/1";
 
 export async function detectTrash(photoUri: string) {
   const apiKey = process.env.EXPO_PUBLIC_ROBOFLOW_API_KEY;
   if (!apiKey) throw new Error("Missing EXPO_PUBLIC_ROBOFLOW_API_KEY");
 
-  // Convert image to base64
   const base64 = await FileSystem.readAsStringAsync(photoUri, {
     encoding: "base64",
   });
 
-  const res = await fetch(WORKFLOW_URL, {
+  const url = `https://serverless.roboflow.com/${MODEL_ID}?api_key=${encodeURIComponent(
+    apiKey
+  )}&name=image.jpg&format=json`;
+
+  const res = await fetch(url, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
-      api_key: apiKey,
-      inputs: {
-        image: {
-          type: "base64",
-          value: base64,
-        },
-      },
-    }),
+    body: base64,
   });
 
   const text = await res.text();
   if (!res.ok) {
-    throw new Error(`Roboflow ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`Roboflow ${res.status}: ${text.slice(0, 300)}`);
   }
 
+  
   return JSON.parse(text);
 }
