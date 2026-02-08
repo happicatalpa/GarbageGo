@@ -9,9 +9,9 @@ const { width } = Dimensions.get("window");
 // Example data (local images)
 // Put img1.jpg/img2.jpg/img3.jpg in assets/
 const slides = [
-  { img: require("../assets/img1.jpg"), caption: "Caption Text" },
-  { img: require("../assets/img2.jpg"), caption: "Caption Two" },
-  { img: require("../assets/img3.jpg"), caption: "Caption Three" },
+//   { img: require("../assets/img1.jpg"), caption: "Caption Text" },
+//   { img: require("../assets/img2.jpg"), caption: "Caption Two" },
+//   { img: require("../assets/img3.jpg"), caption: "Caption Three" },
 ];
 
 export default function ImageCarousel() {

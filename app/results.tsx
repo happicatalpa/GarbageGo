@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
+import { DefaultText } from "@/components/DefaultText";
 
 /**
  * Expect params like:
@@ -79,31 +80,38 @@ export default function ResultsScreen() {
   return (
     <View style={styles.screen}>
       {/* faint stars */}
-      <Text style={[styles.star, styles.starTopRight]}>★</Text>
-      <Text style={[styles.star, styles.starMidLeft]}>★</Text>
+      <DefaultText style={[styles.star, styles.starTopRight]}>★</DefaultText>
+      <DefaultText style={[styles.star, styles.starMidLeft]}>★</DefaultText>
 
       {/* Back arrow */}
       <Pressable onPress={() => router.back()} style={styles.backBtn}>
-        <Text style={styles.backArrow}>←</Text>
+        <DefaultText style={styles.backArrow}>←</DefaultText>
       </Pressable>
 
       <View style={styles.content}>
-        <Text style={styles.smallNote}>successfully logged garbage!</Text>
+        <DefaultText style={styles.smallNote}>successfully logged garbage!</DefaultText>
 
-        <Text style={styles.bigTitle}>YOU SCANNED A{"\n"}{headline}</Text>
+        <DefaultText style={styles.bigTitle}>YOU SCANNED A{"\n"}{headline}</DefaultText>
 
-        <Text style={styles.tip}>{tip}</Text>
+        <DefaultText style={styles.tip}>{tip}</DefaultText>
 
-        <Text style={styles.footerHint}>
-          keep logging garbage to open a gambaeg!
-        </Text>
+        <DefaultText style={styles.footerHint}>
+          keep logging garbage to open a gambage!
+        </DefaultText>
       </View>
 
       <Pressable
         onPress={() => router.replace("/scan")} // change route to your scan page
         style={styles.cta}
       >
-        <Text style={styles.ctaText}>keep logging</Text>
+        <DefaultText style={styles.ctaText}>keep logging</DefaultText>
+      </Pressable>
+
+      <Pressable
+        onPress={() => router.replace("/")} // change route to your home page
+        style={styles.cta}
+      >
+        <DefaultText style={styles.ctaText}>return home</DefaultText>
       </Pressable>
     </View>
   );

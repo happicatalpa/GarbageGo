@@ -15,12 +15,12 @@ export default function HomeScreen() {
 
       {/* Bottom Buttons */}
       <View style={styles.bottomRow}>
-        <Pressable style={styles.smallButton}>
+        <Pressable style={styles.smallButton} onPress={() => router.push("/collection")}>
           <DefaultText style={styles.buttonText}>collection</DefaultText>
         </Pressable>
 
-        <Pressable style={styles.smallButton}>
-          <DefaultText style={styles.buttonText} >gamble</DefaultText>
+        <Pressable style={styles.smallButton} onPress={() => router.push("/gambage")}>
+          <DefaultText style={styles.buttonText} >gambage</DefaultText>
         </Pressable>
       </View>
     </View>
