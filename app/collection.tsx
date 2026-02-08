@@ -1,11 +1,11 @@
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BackArrow } from "../components/BackArrow";
 import ImageCarousel from "../components/ImageCarousel";
 
 export default function Collection() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#D8F2E9" }}>
       {/* Back button*/}
 
       <View
@@ -25,4 +25,13 @@ export default function Collection() {
   );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#bfeedd", // minty green
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 24,
+    }
+});
 

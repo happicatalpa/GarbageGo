@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useLocalSearchParams, router } from "expo-router";
+import { BackArrow } from "@/components/BackArrow";
 import { DefaultText } from "@/components/DefaultText";
+import { router, useLocalSearchParams } from "expo-router";
+import React, { useMemo } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
 
 /**
  * Expect params like:
@@ -84,9 +85,10 @@ export default function ResultsScreen() {
       <DefaultText style={[styles.star, styles.starMidLeft]}>★</DefaultText>
 
       {/* Back arrow */}
-      <Pressable onPress={() => router.back()} style={styles.backBtn}>
+      {/* <Pressable onPress={() => router.back()} style={styles.backBtn}>
         <DefaultText style={styles.backArrow}>←</DefaultText>
-      </Pressable>
+      </Pressable> */}
+      <BackArrow />
 
       <View style={styles.content}>
         <DefaultText style={styles.smallNote}>successfully logged garbage!</DefaultText>
@@ -185,7 +187,6 @@ const styles = StyleSheet.create({
     color: "#8A8A8A",
     fontSize: 18,
     textAlign: "center",
-    fontFamily: "monospace",
     lineHeight: 24,
   },
 
@@ -193,7 +194,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
     color: "#8A8A8A",
     fontSize: 13,
-    fontFamily: "monospace",
     opacity: 0.9,
   },
 
