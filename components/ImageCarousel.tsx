@@ -1,14 +1,13 @@
+import { GarbagedexItemId } from "@/src/garbagedex/types";
 import React, { useRef, useState } from "react";
 import { Dimensions, Image, Pressable, ScrollView, Text, View } from "react-native";
 import type { ICarouselInstance } from "react-native-reanimated-carousel";
 import Carousel from "react-native-reanimated-carousel";
+import { DexEntry } from "./DexEntry";
 
 const { width, height } = Dimensions.get("window");
 
-type Tile = {
-  src: any;
-  caption: string;
-};
+type Tile = { id: GarbagedexItemId | null };
 
 type Slide = {
   title: string;
@@ -21,73 +20,70 @@ const SLIDES: Slide[] = [
     title: "Trash",
     backgroundColor: "#D8F2E9",
     images: [
-      { src: require("../assets/images/chipman.png"), caption: "Cyklops Chip Bag" },
-      { src: require("../assets/images/single cup.png"), caption: "Singles Cup" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
+        { id: "cyklops_chip_bag" },
+        { id: "singles_cup" },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
     ],
   },
   {
     title: "Recyclable Containers",
     backgroundColor: "#D8F2E9",
     images: [
-      { src: require("../assets/images/cola.png"), caption: "Two Cool Cola" },
-      { src: require("../assets/images/bootle.png"), caption: "Aquameana" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
+        { id: "two_cool_cola" },
+        { id: "aquameana" },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
     ],
   },
   {
     title: "Paper",
     backgroundColor: "#D8F2E9",
     images: [
-      { src: require("../assets/images/paper.png"), caption: "CS-tudy" },
-      { src: require("../assets/images/bored.png"), caption: "Cardbored" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
+        { id: "cs_tudy" },
+        { id: "cardbored" },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
     ],
   },
   {
     title: "Compost",
     backgroundColor: "#D8F2E9",
     images: [
-      { src: require("../assets/images/Container.png"), caption: "Hungry Hungry Hippo Container" },
-      { src: require("../assets/images/Banana.png"), caption: "Jhone Bananas!" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
+        { id: "hungry_hungry_hippo_container" },
+        { id: "jhone_bananas" },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
     ],
   },
   {
     title: "Ultimate",
     backgroundColor: "#D8F2E9",
     images: [
-      { src: require("../assets/images/gg.png"), caption: "Gold Garbage (GG)" },
-      { src: require("../assets/images/question.png"), caption: "Unknown" },
+        { id: "golden_guy" },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
+        { id: null },
     ],
   },
 ];
@@ -137,45 +133,9 @@ export default function CollectionCarousel() {
               <ScrollView showsVerticalScrollIndicator>
                 {/* Grid */}
                 <View style={{ flexDirection: "row", flexWrap: "wrap", gap }}>
-                  {item.images.map((img, i) => (
-                    
-                    <View
-                      key={i}
-                      style={{
-                        width: tileWidth,
-                        // extra height for caption
-                        height: tileHeight + 26,
-                        borderRadius: 0, 
-                        backgroundColor: "#E7E1D6", 
-                        overflow: "hidden", // keeps image inside the tile bounds
-                      }}
-                    >
-                      <Image
-                        source={img.src}
-                        resizeMode="cover"
-                        style={{
-                          width: "100%",
-                          height: tileHeight,
-                          borderRadius: 0,
-                        }}
-                      />
-
-                      {/* caption */}
-                      <Text
-                        numberOfLines={1}
-                        style={{
-                          paddingHorizontal: 8,
-                          textAlign: "center",
-                          paddingTop: 4,
-                          fontSize: 12,
-                          fontWeight: "600",
-                          fontFamily: "Pixel",
-                        }}
-                      >
-                        {img.caption}
-                      </Text>
-                    </View>
-                  ))}
+                    {item.images.map((t, i) => (
+                        <DexEntry key={i} id={t.id} width={tileWidth} tileHeight={tileHeight} />
+                    ))}
                 </View>
               </ScrollView>
             </View>

@@ -5,44 +5,49 @@ export const DEX_ASSETS: Record<
   GarbagedexItemId,
   { name: string; unlockedImg: any; lockedImg: any }
 > = {
-  "Cyklops Chip Bag": {
+  cyklops_chip_bag: {
     name: "Cyklops Chip Bag",
-    unlockedImg: require("../../assets/dex/chipman.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/chipman.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "Singles Cup": {
+  singles_cup: {
     name: "Singles Cup",
-    unlockedImg: require("../../assets/dex/single cup.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/single cup.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "2 Cool Cola": {
+  two_cool_cola: {
     name: "2 Cool Cola",
-    unlockedImg: require("../../assets/dex/cola.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/cola.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "Aquameana": {
+  aquameana: {
     name: "Aquameana",
-    unlockedImg: require("../../assets/dex/bootle.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/bootle.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "CS-tudy": {
+  cs_tudy: {
     name: "CS-tudy",
-    unlockedImg: require("../../assets/dex/paper.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/paper.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "Cardbored": {
+  cardbored: {
     name: "Cardbored",
-    unlockedImg: require("../../assets/dex/bored.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/bored.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "Jhone Bananas!": {
+  jhone_bananas: {
     name: "Jhone Bananas!",
-    unlockedImg: require("../../assets/dex/Banana.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/Banana.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
-  "Hungry Hungry Hippo Container": {
+  hungry_hungry_hippo_container: {
     name: "Hungry Hungry Hippo Container",
-    unlockedImg: require("../../assets/dex/Container.png"),
-    lockedImg: require("../../assets/dex/question.png"),
+    unlockedImg: require("../../assets/images/Container.png"),
+    lockedImg: require("../../assets/images/question.png"),
+  },
+  golden_guy: {
+    name: "Golden Guy (GG)",
+    unlockedImg: require("../../assets/images/gg.png"),
+    lockedImg: require("../../assets/images/question.png"),
   },
 };

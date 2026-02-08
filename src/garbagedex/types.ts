@@ -1,12 +1,13 @@
 export type GarbagedexItemId =
-  | "Cyklops Chip Bag"
-  | "Singles Cup"
-  | "2 Cool Cola"
-  | "Aquameana"
-  | "CS-tudy"
-  | "Cardbored"
-  | "Jhone Bananas!"
-  | "Hungry Hungry Hippo Container";
+  | "cyklops_chip_bag"
+  | "singles_cup"
+  | "two_cool_cola"
+  | "aquameana"
+  | "cs_tudy"
+  | "cardbored"
+  | "jhone_bananas"
+  | "hungry_hungry_hippo_container"
+  | "golden_guy";
 
 export type DexEntry = {
   id: GarbagedexItemId;

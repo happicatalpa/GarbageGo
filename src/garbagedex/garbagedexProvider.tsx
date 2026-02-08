@@ -18,14 +18,15 @@ const Ctx = createContext<GarbagedexApi | null>(null);
 function normalizeToId(raw: string): GarbagedexItemId | null {
   const key = raw.toLowerCase().replace(/[\s-]+/g, "_");
   const allowed: Set<GarbagedexItemId> = new Set([
-    "Cyklops Chip Bag",
-    "Singles Cup",
-    "2 Cool Cola",
-    "Aquameana",
-    "CS-tudy",
-    "Cardbored",
-    "Jhone Bananas!",
-    "Hungry Hungry Hippo Container",
+    "cyklops_chip_bag",
+    "singles_cup",
+    "two_cool_cola",
+    "aquameana",
+    "cs_tudy",
+    "cardbored",
+    "jhone_bananas",
+    "hungry_hungry_hippo_container",
+    "golden_guy",
   ]);
   return allowed.has(key as GarbagedexItemId) ? (key as GarbagedexItemId) : null;
 }
@@ -53,16 +54,7 @@ export function GarbagedexProvider({ children }: { children: React.ReactNode }) 
     state,
     isReady,
 
-    addScanResult: (topClass, confidence) => {
-      const id = normalizeToId(topClass);
-      if (!id) return;
-
-      // Example rules:
-      // - always increment count
-      // - unlock if confidence >= 0.6 (tune this)
-      // - add 1 point per scan
-      dispatch({ type: "INCREMENT_COUNT", id });
-      if (confidence >= 0.6) dispatch({ type: "UNLOCK", id });
+    addScanResult: () => {
       dispatch({ type: "ADD_POINTS", amount: 1 });
     },
 
