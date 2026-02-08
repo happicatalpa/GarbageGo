@@ -128,6 +128,10 @@ export default function ScanScreen() {
                         })}>
                     </Pressable>
                 ) : null}
+                <View style={styles.row}>
+                    <Pressable style={[styles.button, styles.secondary]} onPress={() => router.back()}>
+                        <DefaultText style={styles.buttonText}>Back</DefaultText>
+                    </Pressable>
                 {photoUri ? (
                     <Pressable
                         style={[styles.button, styles.scanButton]}
@@ -141,10 +145,10 @@ export default function ScanScreen() {
                         <DefaultText style={styles.buttonText} >{loading ? "Scanning..." : "Scan"}</DefaultText>
                     </Pressable>
                 ) : null}
-                <View style={styles.row}>
-                    <Pressable style={[styles.button, styles.secondary]} onPress={() => router.back()}>
+                
+                    {/* <Pressable style={[styles.button, styles.secondary]} onPress={() => router.back()}>
                         <DefaultText style={styles.buttonText}>Back</DefaultText>
-                    </Pressable>
+                    </Pressable> */}
                     {photoUri && (
                         <Pressable style={[styles.button, styles.secondary]} onPress={() => setPhotoUri(null)}>
                             <DefaultText style={styles.buttonText}>Retake</DefaultText>
@@ -177,7 +181,7 @@ const styles = StyleSheet.create({
 
     title: { color: "white", fontSize: 18, textAlign: "center", fontWeight: "600" },
 
-    row: { flexDirection: "row", justifyContent: "space-between", gap: 12, padding: 20 },
+    row: { flexDirection: "row", justifyContent: "space-between", gap: 12, padding: 20, alignItems:"center" },
     button: {
         paddingVertical: 15,
         paddingHorizontal: 20,
@@ -186,8 +190,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#D2CEC6",
         alignItems: "center",
     },
-    secondary: { backgroundColor: "#A7A189" },
-    scanButton: { backgroundColor: "#D8F2E9", paddingHorizontal: 50 },
+    secondary: { backgroundColor: "#D8F2E9" },
+    scanButton: { backgroundColor: "#D8F2E9"},
 
     buttonText: { color: "#7F7F7F", fontWeight: "600" },
     center: { flex: 1, alignItems: "center", justifyContent: "center", padding: 24, backgroundColor: "#bfeedd" },
