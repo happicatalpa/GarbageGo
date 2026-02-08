@@ -11,8 +11,8 @@ export default function Collection() {
       <View
         style={{
           position: "absolute",
-          top: 50,
-          right: 12,
+          top: 35,
+          right: 30,
           zIndex: 10, 
         }}
       >

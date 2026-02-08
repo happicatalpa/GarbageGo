@@ -20,6 +20,6 @@ export function BackArrow({ onPress }: { onPress?: () => void }) {
 }
 
 const styles = StyleSheet.create({
-  wrap: { width: 44, height: 44, justifyContent: "center" },
+  wrap: { width: 44, height: 44, justifyContent: "center", marginTop: 27, },
   arrow: { fontSize: 34, color: "#7A7A7A", fontFamily: "monospace" },
 });
