@@ -12,7 +12,7 @@ export default function HomeScreen() {
             <Pressable onPress={() => router.push("/scan")}>
                 <Image
                     source={require("../assets/images/camera.png")}
-                    style={{ width: 220, height: 220 }}
+                    style={styles.images}
                 />
                 <DefaultText style={styles.buttonText}>log trash</DefaultText>
             </Pressable>
@@ -22,7 +22,7 @@ export default function HomeScreen() {
                 <Pressable onPress={() => router.push("/collection")}>
                     <Image
                         source={require("../assets/images/book.png")}
-                        style={{ width: 220, height: 220 }}
+                        style={styles.images}
                     />
                     <DefaultText style={styles.buttonText}>collection</DefaultText>
                 </Pressable>
@@ -30,7 +30,7 @@ export default function HomeScreen() {
                 <Pressable onPress={() => router.push("/gambage")}>
                     <Image
                         source={require("../assets/images/gamblage.png")}
-                        style={{ width: 220, height: 220 }}
+                        style={styles.images}
                     />
                     <DefaultText style={styles.buttonText} >gambage</DefaultText>
                 </Pressable>
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
 
     bottomRow: {
         flexDirection: "row",
-        gap: 2,
+        gap: 16,
+        marginTop: 24,
     },
 
     smallButton: {
@@ -85,4 +86,9 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         textAlign: "center",
     },
+
+    images: {
+        width: 150,
+        height: 150,
+    }
 });
