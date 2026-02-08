@@ -7,6 +7,7 @@ import { PixelButton } from "../components/PixelButton";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 import { GarbagedexItemId } from "@/src/garbagedex/types";
 import { DEX_ASSETS } from "@/src/garbagedex/registry";
+import { DefaultText } from "@/components/DefaultText";
 
 const DEFAULT_IMG = require("../assets/images/gamblage.png"); // adjust path
 
@@ -20,6 +21,11 @@ export default function Gambage() {
 
   const [revealedId, setRevealedId] = useState<GarbagedexItemId | null>(null);
   const displayImg = revealedId ? DEX_ASSETS[revealedId].unlockedImg : DEFAULT_IMG;
+  const revealedName =
+  revealedId && DEX_ASSETS[revealedId]
+    ? DEX_ASSETS[revealedId].name
+    : null;
+
 
 //   function animateReveal(int newID) {
 
@@ -33,6 +39,12 @@ export default function Gambage() {
       <View style={styles.center}>
         {/* replace with your asset */}
         <PrizeCard source={displayImg} />
+        
+        {revealedName && (
+        <DefaultText style={styles.revealText}>
+            {`CONGRATS!\nyou got a ${revealedName}`}
+        </DefaultText>
+        )}
 
         <ProgressBar current={Math.min(10, points)} goal={goal} segments={10} />
 
@@ -64,4 +76,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 22,
   },
+  revealText: {
+  fontSize: 16,
+  color: "#6E6E6E",
+  textAlign: "center",
+  marginTop: 6,
+  lineHeight: 22,
+},
+
 });

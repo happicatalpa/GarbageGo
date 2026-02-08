@@ -34,7 +34,7 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             {/* Title */}
-            <DefaultText style={styles.title}>welcome,{"\n" + username}</DefaultText>
+            <DefaultText style={styles.title}>welcome,{"\n" + username}!</DefaultText>
 
             {/* Main Button */}
             <Pressable onPress={() => router.push("/scan")}>

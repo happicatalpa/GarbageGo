@@ -106,7 +106,7 @@ export default function ResultsScreen() {
       <View style={styles.content}>
         <DefaultText style={styles.smallNote}>successfully logged garbage!</DefaultText>
 
-        <DefaultText style={styles.bigTitle}>YOU SCANNED A{"\n"}{headline}</DefaultText>
+        <DefaultText style={styles.bigTitle}>YOU FOUND A {headline}!</DefaultText>
 
         <DefaultText style={styles.tip}>{tip}</DefaultText>
 
