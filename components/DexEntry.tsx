@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 import { DEX_ASSETS } from "../src/garbagedex/registry";
 import { GarbagedexItemId } from "../src/garbagedex/types";
@@ -9,10 +9,12 @@ export function DexEntry({
   id,
   width,
   tileHeight,
+  onPress,
 }: {
   id: GarbagedexItemId | null; // null = empty slot
   width: number;
   tileHeight: number;
+  onPress?: (id: GarbagedexItemId | null) => void;
 }) {
   const { state } = useGarbagedex();
 
@@ -23,10 +25,21 @@ export function DexEntry({
   if (!id) {
     const locked = require("../assets/images/question.png");
     return (
+        <Pressable
+      disabled={!onPress}
+      onPress={() => onPress?.(null)}
+    >
       <View style={[styles.tile, { width, height: tileHeight + 26 }]}>
-        <Image source={locked} resizeMode="contain" style={{ width: "100%", height: tileHeight }} />
-        <Text style={styles.caption} numberOfLines={1}>Unknown</Text>
+        <Image
+          source={locked}
+          resizeMode="contain"
+          style={{ width: "100%", height: tileHeight }}
+        />
+        <Text style={styles.caption} numberOfLines={1}>
+          Unknown
+        </Text>
       </View>
+    </Pressable>
     );
   }
 
@@ -35,16 +48,21 @@ export function DexEntry({
   const unlocked = !!state.dex[id]?.unlocked;
 
   return (
-    <View style={[styles.tile, { width, height: tileHeight + 26 }]}>
-      <Image
-        source={unlocked ? meta.unlockedImg : meta.lockedImg}
-        style={{ width: "100%", height: tileHeight }}
-        resizeMode="contain"
-      />
-      <Text style={styles.caption} numberOfLines={1}>
-        {unlocked ? meta.name : "Unknown"}
-      </Text>
-    </View>
+      <Pressable
+      disabled={!onPress}
+      onPress={() => onPress?.(null)}
+    >
+      <View style={[styles.tile, { width, height: tileHeight + 26 }]}>
+        <Image
+          source={unlocked ? meta.unlockedImg : meta.lockedImg}
+          style={{ width: "100%", height: tileHeight }}
+          resizeMode="contain"
+        />
+        <Text style={styles.caption} numberOfLines={1}>
+          {unlocked ? meta.name : "Unknown"}
+        </Text>
+      </View>
+    </Pressable> 
   );
 }
 

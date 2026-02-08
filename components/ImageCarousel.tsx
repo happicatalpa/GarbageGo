@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
 import type { ICarouselInstance } from "react-native-reanimated-carousel";
 import Carousel from "react-native-reanimated-carousel";
+import { CharacterPopup } from "./CharacterPopup";
 import { DexEntry } from "./DexEntry";
 
 const { width, height } = Dimensions.get("window");
@@ -108,6 +109,21 @@ export default function CollectionCarousel() {
     description: string;
   } | null>(null);
 
+  const handleEntryPress = (id: GarbagedexItemId | null) => {
+    if (!id) return;
+
+    // If you have metadata (recommended), pull it here:
+    // const meta = DEX_ASSETS[id];
+
+    setSelectedItem({
+      title: id, // replace with meta.name if you have it
+      description: "TODO: description here", // replace with meta.description
+    });
+
+    setPopupVisible(true);
+  };
+
+
   return (
     <View style={{ flex: 1 }}>
       <Carousel
@@ -118,6 +134,7 @@ export default function CollectionCarousel() {
         pagingEnabled
         loop={false}
         onSnapToItem={setIndex}
+
         renderItem={({ item }) => (
           <View style={{ flex: 1, backgroundColor: item.backgroundColor, padding: outerPadding }}>
             {/* Title */}
@@ -139,7 +156,7 @@ export default function CollectionCarousel() {
                 {/* Grid */}
                 <View style={{ flexDirection: "row", flexWrap: "wrap", gap }}>
                     {item.images.map((t, i) => (
-                        <DexEntry key={i} id={t.id} width={tileWidth} tileHeight={tileHeight} />
+                        <DexEntry key={i} id={t.id} width={tileWidth} tileHeight={tileHeight} onPress={handleEntryPress} />
                     ))}
                 </View>
               </ScrollView>
@@ -178,6 +195,14 @@ export default function CollectionCarousel() {
           </View>
         )}
       />
+      {selectedItem && (
+          <CharacterPopup
+            visible={popupVisible}
+            onClose={() => setPopupVisible(false)}
+            title={selectedItem.title}
+            description={selectedItem.description}
+          />
+        )}
     </View>
   );
 }
