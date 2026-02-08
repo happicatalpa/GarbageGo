@@ -10,8 +10,8 @@ export function BackArrow({ onPress }: { onPress?: () => void }) {
        <Image
         source={require("../assets/images/arrow.png")}
         style={{
-          width: 24,
-          height: 24,
+          width: 50,
+          height: 30,
         }}
         resizeMode="contain"
       />
