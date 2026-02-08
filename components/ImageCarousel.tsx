@@ -112,12 +112,9 @@ export default function CollectionCarousel() {
   const handleEntryPress = (id: GarbagedexItemId | null) => {
     if (!id) return;
 
-    // If you have metadata (recommended), pull it here:
-    // const meta = DEX_ASSETS[id];
-
     setSelectedItem({
-      title: id, // replace with meta.name if you have it
-      description: "TODO: description here", // replace with meta.description
+      title: id, 
+      description: "TODO: description here", 
     });
 
     setPopupVisible(true);
