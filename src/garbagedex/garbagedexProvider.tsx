@@ -7,7 +7,7 @@ type GarbagedexApi = {
   state: GarbagedexState;
   isReady: boolean;
 
-  addScanResult: (topClass: string, confidence: number) => void;
+  addScanResult: () => void;
   canRoll: () => boolean;
   rollPrize: () => GarbagedexItemId | null;
   resetPoints: () => void;

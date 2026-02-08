@@ -44,7 +44,7 @@ export function garbagedexReducer(
       return { ...state, points: state.points + action.amount };
 
     case "RESET_POINTS":
-      return { ...state, points: 0 };
+      return { ...state, points: Math.max(0, state.points - 10),};
 
     case "UNLOCK": {
       const entry = state.dex[action.id];

@@ -4,13 +4,13 @@ import { BackArrow } from "../components/BackArrow";
 import { PrizeCard } from "../components/PrizeCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { PixelButton } from "../components/PixelButton";
+import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 
 export default function Gambage() {
   // Replace with your real points state/store
-  const points = 0;
-  const goal = 10;
-
-  const canClaim = points >= goal;
+  const { state, canRoll, rollPrize } = useGarbagedex();
+  const points = state.points;
+  const goal = state.rollGoal;
 
   return (
     <View style={styles.screen}>
@@ -20,13 +20,13 @@ export default function Gambage() {
         {/* replace with your asset */}
         <PrizeCard source={require("../assets/images/gamblage.png")} />
 
-        <ProgressBar current={points} goal={goal} segments={10} />
+        <ProgressBar current={Math.min(10, points)} goal={goal} segments={10} />
 
         <PixelButton
           title="claim gambage"
-          disabled={!canClaim}
+          disabled={canRoll()}
           onPress={() => {
-            // later: roll animation, prize selection, reset points, etc.
+            rollPrize();
             console.log("claim!");
           }}
         />

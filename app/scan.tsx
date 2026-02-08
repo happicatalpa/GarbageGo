@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { DefaultText } from "../components/DefaultText";
 import { detectTrash } from "../lib/roboflow";
+import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 
 export default function ScanScreen() {
     const cameraRef = useRef<CameraView | null>(null);
@@ -12,6 +13,7 @@ export default function ScanScreen() {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
+    const { addScanResult } = useGarbagedex();
 
     // Permission state (loading)
     if (!permission) {
@@ -81,6 +83,8 @@ export default function ScanScreen() {
             let topClass = data.top;
             let confidence = data.confidence;
 
+            addScanResult();
+
             router.push({
                 pathname: "/results",
                 params: {
@@ -132,10 +136,6 @@ export default function ScanScreen() {
                     <Pressable
                         style={[styles.button, styles.scanButton]}
                         onPress={onScan}
-                        // onPress={() => {
-                        //   onScan();
-                        //   console.log("Scan this image:", photoUri);
-                        // }}
                         disabled={loading}
                     >
                         <DefaultText style={styles.buttonText} >{loading ? "Scanning..." : "Scan"}</DefaultText>
