@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
-import { View, Text, Pressable, StyleSheet, Image } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { router } from "expo-router";
-import { detectTrash } from "../lib/roboflow";
+import { useRef, useState } from "react";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { DefaultText } from "../components/DefaultText";
+import { detectTrash } from "../lib/roboflow";
 
 export default function ScanScreen() {
   const cameraRef = useRef<CameraView | null>(null);
@@ -26,13 +26,15 @@ export default function ScanScreen() {
   if (!permission.granted) {
     return (
       <View style={styles.center}>
-        <Text style={styles.msg}>We need camera permission to scan trash.</Text>
-        <Pressable style={styles.button} onPress={requestPermission}>
-          <Text style={styles.buttonText}>Grant permission</Text>
+        <DefaultText style={styles.msg}>We need camera permission to scan trash.</DefaultText>
+        <Pressable 
+            style={styles.button} 
+            onPress={requestPermission}>
+          <DefaultText style={styles.buttonText}>Grant permission</DefaultText>
         </Pressable>
 
         <Pressable style={[styles.button, styles.secondary]} onPress={() => router.back()}>
-          <Text style={styles.buttonText}>Back</Text>
+          <DefaultText style={styles.buttonText}>Back</DefaultText>
         </Pressable>
       </View>
     );
@@ -165,16 +167,17 @@ const styles = StyleSheet.create({
 
   row: { flexDirection: "row", justifyContent: "space-between", gap: 12 },
   button: {
-    flex: 1,
-    paddingVertical: 12,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 10,
-    backgroundColor: "rgba(255,255,255,0.2)",
+    minHeight: 48,
+    backgroundColor: "#D2CEC6",
     alignItems: "center",
   },
   secondary: { backgroundColor: "rgba(255,255,255,0.12)" },
   scanButton: { backgroundColor: "rgba(255,255,255,0.28)" },
 
-  buttonText: { color: "white", fontWeight: "600" },
-  center: { flex: 1, alignItems: "center", justifyContent: "center", padding: 24 },
+  buttonText: { color: "#7F7F7F", fontWeight: "600" },
+  center: { flex: 1, alignItems: "center", justifyContent: "center", padding: 24, backgroundColor: "#bfeedd"  },
   msg: { textAlign: "center", marginBottom: 12 },
 });

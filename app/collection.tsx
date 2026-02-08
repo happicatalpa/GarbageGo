@@ -1,10 +1,11 @@
-import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ImageCarousel from "../components/ImageCarousel";
 
 export default function Collection() {
   return (
-    <View style={{ flex: 1, paddingTop: 20 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ImageCarousel />
-    </View>
+    </SafeAreaView>
   );
 }
+
