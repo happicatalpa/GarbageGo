@@ -99,8 +99,14 @@ export default function CollectionCarousel() {
 
   // 2-column layout tile width
   const tileWidth = (width - outerPadding * 2 - cardPadding * 2 - gap) / 2;
-
   const tileHeight = 180;
+  
+  //pop-up stuff
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<{
+    title: string;
+    description: string;
+  } | null>(null);
 
   return (
     <View style={{ flex: 1 }}>
