@@ -27,7 +27,9 @@ export default function ScanScreen() {
     return (
       <View style={styles.center}>
         <DefaultText style={styles.msg}>We need camera permission to scan trash.</DefaultText>
-        <Pressable style={styles.button} onPress={requestPermission}>
+        <Pressable 
+            style={styles.button} 
+            onPress={requestPermission}>
           <DefaultText style={styles.buttonText}>Grant permission</DefaultText>
         </Pressable>
 
@@ -165,8 +167,10 @@ const styles = StyleSheet.create({
 
   row: { flexDirection: "row", justifyContent: "space-between", gap: 12 },
   button: {
-    padding: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 10,
+    minHeight: 48,
     backgroundColor: "#D2CEC6",
     alignItems: "center",
   },
