@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Pressable, Image } from "react-native";
 import { router } from "expo-router";
+import React, { useState } from "react";
+import { Image, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { setLoggedIn, setUsername } from "../components/checkAuth";
 
 
@@ -15,7 +15,10 @@ export default function LoginScreen() {
       <View style={styles.logoWrap}>
         {/* Replace this with your actual art later */}
         <View style={styles.logoBox}>
-          <Text style={styles.logoText}>GG</Text>
+          <Image 
+            source={require("../assets/images/Logo.png")}
+            style={{height:100, width: 190}}
+          />
         </View>
 
         <Text style={styles.subtitle}>go garbage</Text>
@@ -61,29 +64,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#DFF5EF",
     paddingHorizontal: 28,
     paddingTop: 42,
+    
   },
 
   // Top / logo block
   logoWrap: {
     alignItems: "center",
-    marginTop: 30,
+    marginTop: 50,
     marginBottom: 26,
   },
   logoBox: {
     width: 240,
     height: 140,
-    borderRadius: 0,
-    backgroundColor: "rgba(255,255,255,0.12)",
-    borderWidth: 2,
-    borderColor: "#BEB7B0",
     alignItems: "center",
+    marginTop: 40,
     justifyContent: "center",
-  },
-  logoText: {
-    fontFamily: "Pixel", // fallback will be system if Pixel not loaded
-    fontSize: 64,
-    color: "#6E6E6E",
-    letterSpacing: 4,
   },
   subtitle: {
     marginTop: 10,

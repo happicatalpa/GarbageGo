@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { DefaultText } from "@/components/DefaultText";
+import { DEX_ASSETS } from "@/src/garbagedex/registry";
+import { GarbagedexItemId } from "@/src/garbagedex/types";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { BackArrow } from "../components/BackArrow";
+import { PixelButton } from "../components/PixelButton";
 import { PrizeCard } from "../components/PrizeCard";
 import { ProgressBar } from "../components/ProgressBar";
-import { PixelButton } from "../components/PixelButton";
 import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 import { GarbagedexItemId } from "@/src/garbagedex/types";
 import { DEX_ASSETS } from "@/src/garbagedex/registry";
