@@ -1,11 +1,8 @@
-import { router } from "expo-router";
-import { Image, Pressable, StyleSheet, View } from "react-native";
-import { DefaultText } from "../components/DefaultText";
-import { clearAllStorage } from "../src/garbagedex/storage";
-import { getLoggedIn } from "../components/checkAuth";
+import { Redirect, router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Redirect } from "expo-router";
-import { getUsername } from "../components/checkAuth";
+import { Image, Pressable, StyleSheet, View } from "react-native";
+import { getLoggedIn, getUsername } from "../components/checkAuth";
+import { DefaultText } from "../components/DefaultText";
 
 
 
@@ -34,7 +31,7 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             {/* Title */}
-            <DefaultText style={styles.title}>welcome,{"\n" + username}</DefaultText>
+            <DefaultText style={styles.title}>welcome,{"\n" + username}!</DefaultText>
 
             {/* Main Button */}
             <Pressable onPress={() => router.push("/scan")}>
@@ -63,6 +60,10 @@ export default function HomeScreen() {
                     <DefaultText style={styles.buttonText} >gambage</DefaultText>
                 </Pressable>
             </View>
+            {/* log out button */}
+            <Pressable style={styles.logout}>
+                <DefaultText style={styles.buttonText} onPress={() => router.push("/login")}> Log out </DefaultText>
+            </Pressable>
         </View>
     );
 }
@@ -118,5 +119,16 @@ const styles = StyleSheet.create({
     images: {
         width: 150,
         height: 150,
+    },
+
+    logout: {
+        borderRadius: 8,
+        padding:10,
+        marginTop:20,
+        backgroundColor: "#D8D3CF",
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 2,
+        borderColor: "#BEB7B0",
     }
 });
