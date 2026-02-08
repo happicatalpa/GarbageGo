@@ -6,6 +6,7 @@ export default function Collection() {
     <SafeAreaView style={{ flex: 1 }}>
       <ImageCarousel />
     </SafeAreaView>
+    
   );
 }
 
