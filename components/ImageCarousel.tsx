@@ -100,8 +100,7 @@ export default function CollectionCarousel() {
   // 2-column layout tile width
   const tileWidth = (width - outerPadding * 2 - cardPadding * 2 - gap) / 2;
 
-  // keep your tileHeight if you already updated it (#1)
-  const tileHeight = 90; // <-- you can increase this if you want, but you said you already did
+  const tileHeight = 180;
 
   return (
     <View style={{ flex: 1 }}>
@@ -123,7 +122,7 @@ export default function CollectionCarousel() {
             {/* Card container (dark brown/gray) */}
             <View
               style={{
-                flex: 1,
+                flex: height * 0.6,
                 borderRadius: 0, 
                 padding: cardPadding,
                 backgroundColor: "#D2CEC6",
