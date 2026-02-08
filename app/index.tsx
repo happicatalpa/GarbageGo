@@ -1,8 +1,10 @@
 import { router } from "expo-router";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { DefaultText } from "../components/DefaultText";
+import { clearAllStorage } from "../src/garbagedex/storage";
 
 export default function HomeScreen() {
+    //clearAllStorage();
     return (
         <View style={styles.container}>
             {/* Title */}

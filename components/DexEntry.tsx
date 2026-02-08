@@ -4,6 +4,7 @@ import { useGarbagedex } from "../src/garbagedex/garbagedexProvider";
 import { DEX_ASSETS } from "../src/garbagedex/registry";
 import { GarbagedexItemId } from "../src/garbagedex/types";
 
+
 export function DexEntry({
   id,
   width,
@@ -15,6 +16,9 @@ export function DexEntry({
 }) {
   const { state } = useGarbagedex();
 
+  console.log("[DexEntry]", id, "dexEntry:", state.dex[id as GarbagedexItemId]);
+
+
   // placeholder slot
   if (!id) {
     const locked = require("../assets/images/question.png");
@@ -25,6 +29,7 @@ export function DexEntry({
       </View>
     );
   }
+
 
   const meta = DEX_ASSETS[id];
   const unlocked = !!state.dex[id]?.unlocked;

@@ -69,10 +69,12 @@ export function GarbagedexProvider({ children }: { children: React.ReactNode }) 
       const pool = locked.length ? locked : Object.values(state.dex);
 
       const picked = pool[Math.floor(Math.random() * pool.length)].id;
+      console.log("we unlocked a " + picked.toString());
 
       dispatch({ type: "UNLOCK", id: picked });
       dispatch({ type: "SET_LAST_PRIZE", id: picked });
       dispatch({ type: "RESET_POINTS" });
+      console.log();
       return picked;
     },
 
