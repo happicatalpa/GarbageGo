@@ -68,13 +68,25 @@ export default function ScanScreen() {
     try {
         console.log("[scan] calling detectTrash...");
         const data = await detectTrash(photoUri);
+        
         console.log("[scan] detectTrash returned:", Object.keys(data || {}));
 
         setResult(data);
 
         console.log("Top class:", data.top);
         console.log("Confidence:", data.confidence);
-        
+
+        let topClass = data.top;
+        let confidence = data.confidence;
+
+        router.push({
+            pathname: "/results",
+            params: {
+                label: topClass,
+                confidence: confidence.toString(), // params must be strings
+            },
+        });
+
     } catch (e: any) {
         console.log("[scan] ERROR:", e?.message ?? e);
         setError(e?.message ?? "Scan failed");
