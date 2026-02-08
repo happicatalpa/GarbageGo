@@ -1,11 +1,20 @@
-import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
 import { router } from "expo-router";
+import React from "react";
+import { Image, Pressable, StyleSheet } from "react-native";
+
 
 export function BackArrow({ onPress }: { onPress?: () => void }) {
   return (
     <Pressable onPress={onPress ?? (() => router.back())} style={styles.wrap}>
-      <Text style={styles.arrow}>←</Text>
+      
+       <Image
+        source={require("../assets/images/arrow.png")}
+        style={{
+          width: 24,
+          height: 24,
+        }}
+        resizeMode="contain"
+      />
     </Pressable>
   );
 }

@@ -1,6 +1,6 @@
 import { GarbagedexItemId } from "@/src/garbagedex/types";
 import React, { useRef, useState } from "react";
-import { Dimensions, Image, Pressable, ScrollView, Text, View } from "react-native";
+import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
 import type { ICarouselInstance } from "react-native-reanimated-carousel";
 import Carousel from "react-native-reanimated-carousel";
 import { DexEntry } from "./DexEntry";
