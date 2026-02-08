@@ -30,11 +30,24 @@ function normalizeLabel(raw?: string) {
 function prettyTitle(label: string) {
   // Customize these to match your model labels
   const map: Record<string, string> = {
-    recyclable_container: "RECYCLABLE\nCONTAINER",
-    recycling: "RECYCLABLE\nITEM",
-    trash: "TRASH",
-    compost: "COMPOST",
+    metal: "RECYCLABLE\nCAN",
+    paper: "PAPER",
+    glass: "GLASS BOTTLE",
+    organic: "COMPOST",
     unknown: "UNKNOWN\nITEM",
+  };
+
+  return map[label] ?? label.replace(/_/g, " ").toUpperCase();
+}
+
+function advice(label: string) {
+  // Customize these to match your model labels
+  const map: Record<string, string> = {
+    glass: "Intact glass bottles can be recycled or returned. Broken shard are hazards and should be wrapped carefully in the garbage!",
+    metal: "Cans are often recyclable with other containers.",
+    organic: "Make sure this goes in the organic!",
+    paper: "Cardboard, newspapers, mail, and other paper can be recycled!",
+    plastic: "Plastics are tricky: think carefully about whether it goes in the recycling or garbage!",
   };
 
   return map[label] ?? label.replace(/_/g, " ").toUpperCase();
@@ -76,7 +89,7 @@ export default function ResultsScreen() {
   const label = normalizeLabel(rawLabel);
 
   const headline = prettyTitle(label);
-  const tip = tipText(label);
+  const tip = advice(label);
 
   return (
     <View style={styles.screen}>

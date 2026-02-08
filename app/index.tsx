@@ -2,13 +2,39 @@ import { router } from "expo-router";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { DefaultText } from "../components/DefaultText";
 import { clearAllStorage } from "../src/garbagedex/storage";
+import { getLoggedIn } from "../components/checkAuth";
+import React, { useEffect, useState } from "react";
+import { Redirect } from "expo-router";
+import { getUsername } from "../components/checkAuth";
+
+
 
 export default function HomeScreen() {
     //clearAllStorage();
+    const [ready, setReady] = useState(false);
+    const [loggedIn, setLoggedInState] = useState(false);
+    const [username, setUsername] = useState("");
+
+
+    useEffect(() => {
+        (async () => {
+        const v = await getLoggedIn();
+        const name = await getUsername();
+      setUsername(name ?? "");
+        setLoggedInState(v);
+        setReady(true);
+        })();
+    }, []);
+
+    if (!ready) return null; // or a splash component
+
+    if (!loggedIn) {
+        return <Redirect href="/login" />;
+    }
     return (
         <View style={styles.container}>
             {/* Title */}
-            <DefaultText style={styles.title}>welcome,{"\n"}username</DefaultText>
+            <DefaultText style={styles.title}>welcome,{"\n" + username}</DefaultText>
 
             {/* Main Button */}
             <Pressable onPress={() => router.push("/scan")}>
