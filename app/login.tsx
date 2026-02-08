@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#DFF5EF",
     paddingHorizontal: 28,
     paddingTop: 42,
+    
   },
 
   // Top / logo block
@@ -75,18 +76,9 @@ const styles = StyleSheet.create({
   logoBox: {
     width: 240,
     height: 140,
-    // borderRadius: 0,
-    // backgroundColor: "rgba(255,255,255,0.12)",
-    // borderWidth: 2,
-    // borderColor: "#BEB7B0",
     alignItems: "center",
+    marginTop: 40,
     justifyContent: "center",
-  },
-  logoText: {
-    fontFamily: "Pixel", // fallback will be system if Pixel not loaded
-    fontSize: 64,
-    color: "#6E6E6E",
-    letterSpacing: 4,
   },
   subtitle: {
     marginTop: 10,
